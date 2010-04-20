@@ -182,3 +182,7 @@ h1 {
   font-size: 12px;
   list-style: square;
 }
+
+#store .entry form, #store .entry form div {
+display: inline;
+}
