@@ -3,9 +3,7 @@
 <html>
 <head>
   <title>Pragprog Books Online Store</title>
-<!-- START:stylesheet -->
   <%= stylesheet_link_tag "depot", :media => "all" %>
-<!-- END:stylesheet -->
 </head>
 <body id="store">
   <div id="banner">
@@ -14,6 +12,7 @@
   </div>
   <div id="columns">
     <div id="side">
+      Now: <%= Time.now.to_s %>
       <a href="http://www....">Home</a><br />
       <a href="http://www..../faq">Questions</a><br />
       <a href="http://www..../news">News</a><br />
