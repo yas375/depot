@@ -1,5 +1,10 @@
 class StoreController < ApplicationController
   def index
+    if session[:counter].nil?
+      session[:counter] = 1
+    else
+      session[:counter] +=1
+    end
     @products = Product.for_sale
   end
 
@@ -7,6 +12,7 @@ class StoreController < ApplicationController
     product = Product.find(params[:id])
     @cart = find_cart
     @cart.add_product(product)
+    session[:counter] = nil
   rescue ActiveRecord::RecordNotFound
     logger.error("Attemt to access invalid product #{params[:id]}")
     redirect_to_index("Invalid product")

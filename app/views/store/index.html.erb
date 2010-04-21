@@ -1,3 +1,5 @@
+<%= "Вы зашли сюда уже " + pluralize(session[:counter], 'time', 'times').to_s + " раз и всё еще ничего не купили..." if session[:counter] > 5  %>
+
 <h1>Your Pragmatic Catalog</h1>
 
 <% for product in @products -%>
