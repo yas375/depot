@@ -9,19 +9,22 @@ class StoreController < ApplicationController
     @cart.add_product(product)
   rescue ActiveRecord::RecordNotFound
     logger.error("Attemt to access invalid product #{params[:id]}")
-    flash[:notice] = "Invalid product"
-    redirect_to :action => :index
+    redirect_to_index("Invalid product")
   end
 
   def empty_cart
     session[:cart] = nil
-    flash[:notice] = 'Теперь ваша корзина пуста'
-    redirect_to :action => :index
+    redirect_to_index("Теперь ваша корзина пуста")
   end
 
 private
   def find_cart
       session[:cart] ||= Cart.new
+  end
+
+  def redirect_to_index(msg)
+    flash[:notice] = msg
+    redirect_to :action => :index
   end
 
 end
