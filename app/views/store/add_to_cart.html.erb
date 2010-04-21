@@ -6,4 +6,7 @@
   <% for item in @cart.items %>
     <li><%= item.quantity %> &times; <%=h item.title  %></li>
   <% end %>
+
+
+  <%= button_to 'Empty cart', :action => :empty_cart %>
 </ul>
