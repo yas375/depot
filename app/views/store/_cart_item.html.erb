@@ -1,5 +1,10 @@
 <tr<%= ' id="current_item"' if cart_item == @current_item  -%>>
   <td><%= cart_item.quantity -%></td>
+  <td>
+    <% form_remote_tag :url => {:action => :decrement_quantity, :id => cart_item} do %>
+      <%= submit_tag "&ndash;" %>
+    <% end  %>
+  </td>
   <td><%= cart_item.title -%></td>
   <td class="item-price"><%= number_to_currency(cart_item.price) -%></td>
 </tr>
