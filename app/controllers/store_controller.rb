@@ -24,7 +24,7 @@ class StoreController < ApplicationController
 
   def empty_cart
     session[:cart] = nil
-    redirect_to_index("Теперь ваша корзина пуста")
+    redirect_to_index
   end
 
 private
