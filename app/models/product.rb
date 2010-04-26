@@ -1,4 +1,10 @@
 class Product < ActiveRecord::Base
+  #belong
+  #has_one
+  #has_many
+  has_many :line_items
+
+
   validates_presence_of :description, :image_url
   validates_numericality_of :price
 
