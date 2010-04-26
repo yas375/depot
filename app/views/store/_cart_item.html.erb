@@ -1,4 +1,4 @@
-<tr>
+<tr<%= ' id="current_item"' if cart_item == @current_item  -%>>
   <td><%= cart_item.quantity -%></td>
   <td><%= cart_item.title -%></td>
   <td class="item-price"><%= number_to_currency(cart_item.price) -%></td>
