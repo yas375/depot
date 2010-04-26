@@ -13,6 +13,9 @@
 
   <div id="columns">
     <div id="side">
+      <div id="cart">
+        <%= render :partial => 'cart', :object => @cart %>
+      </div>
       Now: <%= Time.now.to_s %>
       <a href="http://www....">Home</a><br />
       <a href="http://www..../faq">Questions</a><br />
