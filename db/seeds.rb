@@ -2,6 +2,10 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 # Examples:
-#   
+#
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+
+PaymentType.create!(:name => 'Check')
+PaymentType.create!(:name => 'Credit card')
+PaymentType.create!(:name => 'Purchase order')

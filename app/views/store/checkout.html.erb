@@ -1,7 +1,7 @@
 <div class="depot-form">
-  
+
   <%= error_messages_for 'order' %>
-  
+
   <% form_for :order, :url => { :action => :save_order } do |form| %>
     <fieldset>
       <legend>Please Enter Your Details</legend>
@@ -24,13 +24,13 @@
       <div>
         <%= form.label :pay_type, "Pay with:" %>
         <%=
-          form.select :pay_type,
-                       Order::PAYMENT_TYPES, 
+          form.select :payment_type_id,
+                      payment_methods, 
                       :prompt => "Select a payment method"
         %>
       </div>
-    
+
       <%= submit_tag "Place Order", :class => "submit" %>
     </fieldset>
-  <% end %>  
+  <% end %>
 </div>
