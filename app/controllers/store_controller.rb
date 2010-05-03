@@ -46,6 +46,7 @@ class StoreController < ApplicationController
 
   def checkout
     @cart = find_cart
+    @hide_checkout_button = true
     if @cart.items.empty?
       redirect_to_index('Basket is empty')
     else
