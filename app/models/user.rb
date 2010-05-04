@@ -6,11 +6,6 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validate :password_non_blank
 
-  def self.encrypted_password(password, salt)
-    string_to_hash = password + "wibble" + salt
-    Digest::SHA1.hexdigest(string_to_hash)
-  end
-
   def self.authenticate(name, password)
     user = self.find_by_name(name)
     if user
@@ -22,8 +17,19 @@ class User < ActiveRecord::Base
     user
   end
 
+  def password
+    @password
+  end
 
-  private
+  def password=(pwd)
+    @password = pwd
+    return if pwd.blank?
+    create_new_salt
+    self.hashed_password = User.encrypted_password(self.password, self.salt)
+  end
+
+
+private
   def password_non_blank
     errors.add(:password, "Missing password" ) if hashed_password.blank?
   end
@@ -32,4 +38,8 @@ class User < ActiveRecord::Base
     self.salt = self.object_id.to_s + rand.to_s
   end
 
+  def self.encrypted_password(password, salt)
+    string_to_hash = password + "wibble" + salt
+    Digest::SHA1.hexdigest(string_to_hash)
+  end
 end
