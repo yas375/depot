@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   has_many :line_items
-  has_one :payment_type
+  belongs_to :payment_type
 
   validates_presence_of :name, :address, :email, :payment_type_id
 
@@ -9,5 +9,9 @@ class Order < ActiveRecord::Base
       li = LineItem.from_cart_item(item)
       line_items << li
     end
+  end
+
+  def payment
+    payment_type.name
   end
 end
