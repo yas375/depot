@@ -3,8 +3,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :name
 
   attr_accessor :password_confirmation
+  attr_reader :password
+
   validates_confirmation_of :password
-  validate :password_non_blank
+
+  validates_presence_of :password, :password_confirmation
+
+  after_destroy :check_if_last
 
   def self.authenticate(name, password)
     user = self.find_by_name(name)
@@ -17,10 +22,6 @@ class User < ActiveRecord::Base
     user
   end
 
-  def password
-    @password
-  end
-
   def password=(pwd)
     @password = pwd
     return if pwd.blank?
@@ -28,10 +29,11 @@ class User < ActiveRecord::Base
     self.hashed_password = User.encrypted_password(self.password, self.salt)
   end
 
-
 private
-  def password_non_blank
-    errors.add(:password, "Missing password" ) if hashed_password.blank?
+  def check_if_last
+    if User.count.zero?
+      raise "Can't delete last user"
+    end
   end
 
   def create_new_salt
@@ -42,4 +44,5 @@ private
     string_to_hash = password + "wibble" + salt
     Digest::SHA1.hexdigest(string_to_hash)
   end
+
 end

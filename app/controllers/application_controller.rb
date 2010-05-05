@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  layout "store"
   before_filter :authorize, :except => :login
   helper :all # include all helpers, all the time
   protect_from_forgery  :secret => '8fc080370e56e929a2d5afca5540a0f7' # See ActionController::RequestForgeryProtection for details
