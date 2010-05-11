@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
-  has_many :line_items
+  has_many :line_items, :dependent => :destroy
+  has_many :products, :through => :line_items
   belongs_to :payment_type
 
   validates_presence_of :name, :address, :email, :payment_type_id
