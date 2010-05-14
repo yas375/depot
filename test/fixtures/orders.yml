@@ -4,10 +4,10 @@ one:
   name: MyString
   address: MyText
   email: MyString
-  pay_type: MyString
+  payment_type_id: 1
 
 two:
   name: MyString
   address: MyText
   email: MyString
-  pay_type: MyString
+  payment_type_id: 2
