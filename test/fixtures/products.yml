@@ -1,5 +1,11 @@
-one:
-  title: Ruby book222
+ruby_book:
+  title: Programming Ruby
   description: Dummy description
-  price: 1
-  image_url: asdasdasd.jpg
+  price: 1234
+  image_url: ruby.png
+
+rails_book:
+  title: Agile Web Development with Rails
+  description: Dummy description
+  price: 2345
+  image_url: rails.png
